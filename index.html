@@ -32,15 +32,26 @@
   </nav>
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <br><br>
-      <h3 class="header center grey-text">Framework for TCP Prague simulations in ns-3</h3>
+      <br>
+      <h4 class="header center grey-text">Framework for TCP Prague simulations in ns-3</h4>
       <div class="row center">
-        <h5 class="header col s12 light"><font color="orange">Student:</font> Shravya K. S &#09; <font color="orange">Mentor:</font> Mohit P. Tahiliani <font color="orange">Organization:</font> The ns-3 Network Simulator</h5>
-      </div>
-      <div class="row center">
+        <h6 class="header col s12 light"><font color="orange">Student:</font> Shravya K. S<br><br> <font color="orange">Mentor:</font> Mohit P. Tahiliani<br><br> <font color="orange">Organization:</font> The ns-3 Network Simulator Project</h6>
+      </div> 
+      <h5>Project Overview</h5>
+      <p style="text-align:justify">During GSoC 2017, I started developing a framework for simulating TCP Prague in the ns-3 network simulator.  "TCP Prague" is a term used to refer to current research work on extending TCP (the dominant transport protocol in the Internet) to provide lower latency service in a wide-area network, similar to what can be achieved in data centers, but with a congestion control and in-network queuing elements that are backward compatible with legacy implementations. TCP Prague is targeted to be an evolution of Data Center TCP (DCTCP), and the research community is parallely implementing and standardising it.</p>
+
+      <p style="text-align:justify">DCTCP starves the throughput of other TCP flows (e.g., Reno, Cubic, etc) when they co-exist; so one of the goals of research community is to ensure that TCP Prague can co-exist with other TCP flows without degrading their throughput. Although still a work-in-progress, a few modules of TCP Prague have been finalised and briefly experimented by the research community, such as: the Low Latency, Low Loss, Scalable throughput (L4S) service architecture, DualQ Coupled Active Queue Management (AQM) and Modified ECN Semantics for Ultra Low Queuing Delay.</p>
+
+      <p style="text-align:justify">I developed a framework to simulate above mentioned TCP Prague modules in ns-3 with necessary examples, tests and documentation. This work is important to the ns-3 and research community, because this is a contemporary research topic and because network simulators are extensively used for performance evaluation. This report presents the details of the work done during GSoC 2017, and provides the necessary information to reproduce this work.</p>
+
+      <h5>Deliverables</h5>
+      <p style="text-align:justify">This project was split into three phases, and each phase has been completed with documentation, tests, and example programs, and is ready to be reviewed for merging to the ns-3 mainline. My patches integrate with ns-3-dev as of changeset 13050, and contain 7848 lines of new or changed C++ code.</p>
+
+<!---      <div class="row center">
+        <a href="https://www.nsnam.org/wiki/GSOC2017Tcp" id="download-button" class="btn-large waves-effect waves-light orange">Project Wiki</a>
         <a href="https://github.com/shravya-ks/ns-3-tcp-prague" id="download-button" class="btn-large waves-effect waves-light orange">Source Code</a>
       </div>
-      <br><br>
+-->
 
     </div>
   </div>
@@ -53,28 +64,28 @@
       <div class="row">
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">RFC 7928 Compliant</h5>
+            <h2 class="center light-blue-text"><i class="material-icons">assignment_turned_in</i></h2>
+            <h5 class="center"><font color="orange">Phase 1</font><br>Implementation of Data Center TCP in ns-3</h5>
 
-            <p class="light">The automated test cases provided in this project are in line with those mentioned in RFC 7928. RFC 7928 is an Informational RFC that provides a set of guidelines to characterise AQM algorithms.</p>
+            <p class="light" style="text-align:center">Implemented Data Center TCP (DCTCP) algorithm in ns-3 and documented its functionality. A test suite and an example program (aligned with the ACM SIGCOMM 2010 paper of DCTCP) are also provided.</p>
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">Easy to Use</h5>
+            <h2 class="center light-blue-text"><i class="material-icons">assignment_turned_in</i></h2>
+            <h5 class="center"><font color="orange">Phase 2</font><br>Topology Helpers for Data Center Networks in ns-3</h5>
 
-            <p class="light">This project automates the cycle of simulation setup, topology creation, traffic generation, program execution, results collection and graphical representation (as recommended in RFC 7928).</p>
+            <p class="light" style="text-align:center">Implemented BCube and Fat Tree topology helpers for Data Center Network simulations in ns-3, and documented their functionality. An example program for each helper with NetAnim support is also provided.</p>
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to Modify</h5>
+            <h2 class="center light-blue-text"><i class="material-icons">assignment_turned_in</i></h2>
+            <h5 class="center"><font color="orange">Phase 3</font><br>DualQ Coupled AQM support in ns-3</h5>
 
-            <p class="light">The procedure to add a new AQM algorithm (such as the one designed by you) to this suite and compare its performance with others is very simple, provided the new algorithm is implemented in ns-3.</p>
+            <p class="light" style="text-align:center">Extended CoupledAQM support for PiSquare queue discipline and implemented DualQ Coupled PiSquare queue discipline. Example, test-suite and documentation are provided for both.</p>
           </div>
         </div>
       </div>
@@ -91,33 +102,30 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">About the Project</h5>
-          <p class="grey-text text-lighten-4">We are a team of students from NITK Surathkal working on this project under the guidance of Dr. Mohit P. Tahiliani. The main idea is to enable verifiable and reproducible research in the area of Active Queue Management (AQM) algorithms.</p>
+          <h5 class="white-text">Acknowledgement</h5>
+          <p class="grey-text text-lighten-4">This project was funded by Google Summer of Code (GSoC) 2017. I would like to thank the ns-3 community for giving me this opportunity, and providing the much needed assistance in completing this project.</p>
 
 
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">People</h5>
           <ul>
-            <li><a class="white-text" href="http://adeepkit01.github.io/">Ankit Deepak</a></li>
-            <li><a class="white-text" href="https://github.com/shravya-ks">Shravya K. S.</a></li>
-            <li><a class="white-text" href="http://cse.nitk.ac.in/faculty/mohit-p-tahiliani">Mohit P. Tahiliani</a></li>
+            <li><a class="white-text" href="https://github.com/shravya-ks">Shravya K. S. (Student)</a></li>
+            <li><a class="white-text" href="http://cse.nitk.ac.in/faculty/mohit-p-tahiliani">Mohit P. Tahiliani (Mentor)</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
-          <h5 class="white-text">Reading Material</h5>
+          <h5 class="white-text">Useful Links</h5>
           <ul>
-            <li><a class="white-text" href="http://dl.acm.org/citation.cfm?id=3067674">WNS3 2017 Paper</a></li>
-            <li><a class="white-text" href="https://github.com/aqm-eval-suite/ns-3-dev-git/blob/master/src/aqm-eval-suite/doc/aqm-eval-suite.rst">Documentation</a></li>
-            <li><a class="white-text" href="https://github.com/aqm-eval-suite/ns-3-dev-git">Source repository</a></li>
-            <li><a class="white-text" href="https://github.com/aqm-eval-suite/ns-3-dev-git/issues">Open Issues</a></li>
+            <li><a class="white-text" href="https://www.nsnam.org/wiki/GSOC2017Tcp">Project Wiki</a></li>
+            <li><a class="white-text" href="https://github.com/shravya-ks/ns-3-tcp-prague">Source repository</a></li>
+            <li><a class="white-text" href="https://github.com/shravya-ks/ns-3-tcp-prague/issues">Open Issues</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Copyright © 2016-17 <a class="orange-text text-lighten-3" href="http://wing.nitk.ac.in">Wireless Information Networking Group (WiNG),</a> NITK Surathkal, India. All Rights Reserved.
       <p><center>Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a></center></p></div>
       </div>
     </div>
