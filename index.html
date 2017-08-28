@@ -47,12 +47,6 @@
       <h5><font color="vintage">Deliverables</font></h5>
       <p style="text-align:justify">This project was split into three phases, and each phase has been completed with documentation, tests, and example programs, and is ready to be reviewed for merging to the ns-3 mainline. My patches integrate with ns-3-dev as of changeset 13050, and contain 7848 lines of new or changed C++ code.</p>
 
-<!---      <div class="row center">
-        <a href="https://www.nsnam.org/wiki/GSOC2017Tcp" id="download-button" class="btn-large waves-effect waves-light orange">Project Wiki</a>
-        <a href="https://github.com/shravya-ks/ns-3-tcp-prague" id="download-button" class="btn-large waves-effect waves-light orange">Source Code</a>
-      </div>
--->
-
     </div>
   </div>
 
@@ -65,7 +59,7 @@
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center light-green-text"><i class="material-icons">assignment_turned_in</i></h2>
-            <h5 class="center"><font color="orange">Phase 1</font><br>Implementation of Data Center TCP in ns-3</h5>
+            <h5 class="center"><font color="vintage">Phase 1</font><br>Implementation of Data Center TCP in ns-3</h5>
 
             <p class="light" style="text-align:center">Implemented Data Center TCP (DCTCP) algorithm in ns-3 and documented its functionality. A test suite and an example program (aligned with the ACM SIGCOMM 2010 paper of DCTCP) are also provided.</p>
 
@@ -78,7 +72,7 @@
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center light-green-text"><i class="material-icons">assignment_turned_in</i></h2>
-            <h5 class="center"><font color="orange">Phase 2</font><br>Topology Helpers for Data Center Networks in ns-3</h5>
+            <h5 class="center"><font color="vintage">Phase 2</font><br>Topology Helpers for Data Center Networks in ns-3</h5>
 
             <p class="light" style="text-align:center">Implemented BCube and Fat Tree topology helpers for Data Center Network simulations in ns-3, and documented their functionality. An example program for each helper with NetAnim support is also provided.</p>
 
@@ -91,7 +85,7 @@
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center light-green-text"><i class="material-icons">assignment_turned_in</i></h2>
-            <h5 class="center"><font color="orange">Phase 3</font><br>DualQ Coupled AQM support in ns-3</h5>
+            <h5 class="center"><font color="vintage">Phase 3</font><br>DualQ Coupled AQM support in ns-3</h5>
 
             <p class="light" style="text-align:center">Extended CoupledAQM support for PiSquare queue discipline and implemented DualQ Coupled PiSquare queue discipline. Example, test-suite and documentation are provided for both.</p>
             <div class="row center">
@@ -104,32 +98,50 @@
     </div>
 
     <div class="section">
-      <h6><font color="vintage">Steps to build the code for Phase 1</font></h6>
+      <h6><font color="brown">Steps to build the code for Phase 1</font></h6>
           <ol>
             <li>Download ns-3-dev, checkout version 13050</li>
             <li>Download the 'raw' patch from the above link and save it (e.g., dctcp-raw.patch)</li>
-            <li>Run the following patch command: "patch -p1 -i dctcp-raw.patch"</li>
+            <li>Run the following patch command: patch -p1 -i dctcp-raw.patch</li>
             <li>Compile and run the example program: ./waf --run "dctcp-example"</li>
             <li>To run the test suite: ./test.py --suite=tcp-dctcp-test</li>
           </ol>
-      <h6><font color="vintage">Steps to build the code for Phase 2</font></h6>
+      <h6><font color="brown">Steps to build the code for Phase 2</font></h6>
           <ol>
             <li>Download ns-3-dev, checkout version 13050</li>
             <li>Download the 'raw' patch from the above link and save it (e.g., topology-helper.patch)</li>
-            <li>Run the following patch command: "patch -p1 -i topology-helper.patch"</li>
+            <li>Run the following patch command: patch -p1 -i topology-helper.patch</li>
             <li>Compile and run the BCube example program: ./waf --run "bcube-animation"</li>
             <li>Compile and run the Fat-Tree example program: ./waf --run "fat-tree-animation"</li>
           </ol>
-      <h6><font color="vintage">Steps to build the code for Phase 3</font></h6>
+      <h6><font color="brown">Steps to build the code for Phase 3</font></h6>
           <ol>
             <li>Download ns-3-dev, checkout version 13050</li>
             <li>Download the 'raw' patch from the above link and save it (e.g., aqm.patch)</li>
-            <li>Run the following patch command: "patch -p1 -i aqm.patch"</li>
+            <li>Run the following patch command: patch -p1 -i aqm.patch</li>
             <li>Compile and run the PiSquare example program ./waf --run "pi-square-example"</li>
             <li>Compile and run the PiSquareQueueDisc test-suite: ./test.py --suite=pi-square-queue-disc</li>
             <li>Compile and run the DualQCoupledPiSquare example program: ./waf --run "dual-q-coupled-pi-square-example"</li>
             <li>Compile and run the  DualQCoupledPiSquare test-suite: ./test.py --suite=dual-q-coupled-pi-square-queue-disc</li>
           </ol>
+
+      <h5><font color="vintage">Possible Extensions</font></h5>
+        <p style="text-align:justify">This project can be extended further as suggested below:</p>
+          <ol>
+            <li>DCTCP model currently works with RED queue discipline only. It could be extended to work with the basic PfifoFast queue discipline. PfifoFast does not support ECN marking yet, which is mandatory for the working of DCTCP.</li>
+            <li>DualQ Coupled framework implemented in this project is specific to PiSquare queue discipline. It could be more generalised to support other queue disciplines like Curvy RED.</li>
+            <li>DualQ implementation can be further optimised using integer arithmetic as described in the Internet draft of DualQ Coupled AQM.</li>
+          </ol>
+
+      <h5><font color="vintage">Online References</font></h5>
+        <p style="text-align:justify">More details about this project, source code and final patch are available on the links given below: </p>
+        
+        <div class="row center">
+        <a href="https://www.nsnam.org/wiki/GSOC2017Tcp" id="download-button" class="btn-large waves-effect waves-light green">Project Wiki</a>
+        <a href="https://github.com/shravya-ks/ns-3-tcp-prague" id="download-button" class="btn-large waves-effect waves-light green">Source Code</a>
+        <a href="https://codereview.appspot.com/328380044" id="download-button" class="btn-large waves-effect waves-light green">Final Patch</a>
+
+        </div>
     </div>
   </div>
 
